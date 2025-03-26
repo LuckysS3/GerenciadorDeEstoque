@@ -1,95 +1,118 @@
-Gerenciador de Estoque 📦
-O Gerenciador de Estoque é um software desenvolvido em C# que auxilia no controle e gerenciamento de produtos e categorias em estoque. Ele permite o registro, organização e acompanhamento de itens, integrando-se a APIs para listar categorias de produtos de forma dinâmica.
 
-Funcionalidades 🚀
-Gerenciamento de Produtos: Cadastro, listagem, atualização e exclusão de produtos.
+# Gerenciador de Estoque 📦 
 
-Categorias de Produtos: Integração com APIs públicas para obter e organizar categorias.
+Um sistema de gerenciamento de estoque desenvolvido em C# com .NET 8, projetado para facilitar o controle de produtos e categorias em pequenas e médias empresas.
 
-Persistência de Dados: Armazenamento local de informações em arquivos JSON.
+---
 
-Validações Inteligentes: Confirmação de categorias e consistência de dados.
+## Funcionalidades 🚀
 
-Interface Simples: Foco na funcionalidade com console interativo.
+- **Cadastro de Produtos:** Permite adicionar, editar e excluir produtos do estoque.
+- **Categorias de Produtos:** Integra-se com uma API para obter uma lista de categorias.
+- **Persistência de Dados:** Os dados são armazenados localmente em arquivos JSON.
+- **Interface Simples:** Fácil de usar, com mensagens claras para interação no console.
+- **Validação:** Verifica a consistência dos dados e impede duplicatas.
 
-Tecnologias Utilizadas 🛠️
-C#
+---
 
-.NET
 
-JSON para persistência de dados
 
-HttpClient para requisições HTTP
 
-System.Text.Json para serialização/deserialização
+## Tecnologias Utilizadas 🛠️
+- **Linguagem:** C#
+- **Framework:** .NET 8
+- **Persistência de Dados:** JSON
+- **HTTP Requests:** Biblioteca HttpClient para comunicação com APIs externas
 
-Arquitetura Modular: Separação clara entre serviços e controle de dados
+---
+## Como Executar o Projeto 🚀
 
-Como Funciona? 🤔
-Carregamento Inicial:
+1. **Clone o repositório:**
 
-Os produtos são carregados de um arquivo local (products.json).
+    ```bash
+   git clone https://github.com/seu-usuario/gerenciador-de-estoque.git
+   ```
 
-As categorias são buscadas dinamicamente através de uma API pública.
+2. **Navegue até o diretório do projeto:**
 
-Gerenciamento de Produtos:
+   ```bash
+   cd gerenciador-de-estoque
+   ```
 
-Produtos podem ser adicionados, editados ou removidos.
+3. **Restaure as dependências:**
 
-As categorias de cada produto são validadas com base na lista obtida da API.
+   ```bash
+   dotnet restore
+   ```
 
-Validações:
+4.  **Execute o projeto:**
 
-Verifica se o arquivo JSON existe antes de carregar os dados.
+    ```bash
+    dotnet run
+    ```
 
-Garante que produtos só sejam cadastrados com categorias válidas.
+---
+## Integração com API de Categorias
 
-Pré-requisitos 🛠️
-.NET SDK 6.0 ou superior
+O sistema faz uma requisição GET para obter categorias de produtos:
 
-Conexão com a internet para buscar as categorias via API
+- **URL da API:** [https://api.mercadolibre.com/sites/MLB/categories](https://api.mercadolibre.com/sites/MLB/categories)
+- **Resposta esperada:** Uma lista de categorias com ID e nome.
 
-Sistema operacional compatível com a CLI do .NET (Windows, Linux ou macOS)
+Caso não seja possível acessar a API, o sistema lida com erros e fornece uma mensagem clara ao usuário.
 
-Como Executar? 🏃‍♂️
-Clone o repositório:
+---
+## Estrutura do Projeto 📦 
 
-bash
-Copiar
-Editar
-git clone https://github.com/seu-usuario/gerenciador-de-estoque.git
-Acesse o diretório do projeto:
+``` 
+Gerenciador_De_Estoque/
+├── Controllers/
+│   ├── StockController.cs
+│   └── CategoryApiService.cs
+├── Models/
+│   ├── ProductModel.cs
+│   └── ProductCategory.cs
+├── Utils/
+│   ├── FileManager.cs
+├── Program.cs
+└── README.md
+```
 
-bash
-Copiar
-Editar
-cd gerenciador-de-estoque
-Restaure os pacotes necessários:
+---
+## Exemplos de Uso 📖
 
-bash
-Copiar
-Editar
-dotnet restore
-Execute o projeto:
+### Adicionar Produto
 
-bash
-Copiar
-Editar
-dotnet run
-Melhorias Futuras 🚧
-Adicionar interface gráfica com WPF ou Blazor.
+1. Informe o nome do produto.
+2. Selecione a categoria.
+3. Informe a quantidade.
 
-Implementar autenticação de usuário para diferentes níveis de acesso.
+### Visualizar Categorias
+Categorias obtidas da API serão exibidas automaticamente no console para facilitar o gerenciamento.
 
-Melhorar o sistema de relatórios, com exportação para PDF ou Excel.
+---
+## Contribuições 🧑‍💻
 
-Criar integração com banco de dados para escalabilidade.
+Contribuições são bem-vindas! Para contribuir:
 
-Implementar testes automatizados com xUnit.
+1. Fork este repositório.
+2. Crie uma branch para sua feature:
+   ```bash
+   git checkout -b minha-feature
+   ```
+3. Envie suas alterações:
+   ```bash
+   git push origin minha-feature
+   ```
+4. Abra um Pull Request.
+## Melhorias Futuras 🚧
+- Adicionar interface gráfica com WPF ou Blazor.
+- Implementar autenticação de usuário para diferentes níveis de acesso.
+- Melhorar o sistema de relatórios, com exportação para PDF ou Excel.
+- Criar integração com banco de dados para escalabilidade.
+- Implementar testes automatizados com xUnit.
 
-Contribua! 🤝
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
+---
+## Licença 📄
 
-Licença 📜
-Este projeto é licenciado sob a MIT License.
-
+Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT).
