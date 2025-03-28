@@ -1,5 +1,4 @@
 ﻿using Gerenciador_De_Estoque.Controllers;
-using Gerenciador_De_Estoque.View;
 using Gerenciamento_De_Estoque.Controllers;
 using Gerenciamento_De_Estoque.Models;
 
@@ -37,7 +36,7 @@ class StockView
                     ConsultasProduto();
                     break;
                 case "4":
-                    EditarProduto();
+                    EditarProdutoMenu();
                     break;
                 case "7":
                     Console.WriteLine("Tchau");
@@ -119,7 +118,7 @@ class StockView
         }
     }
 
-    private void EditarProduto()
+    private void EditarProdutoMenu()
     {
         Console.Clear();
         Console.WriteLine("-------------------- Editar Produto -------------------");
@@ -127,6 +126,7 @@ class StockView
         try
         {
             int id = int.Parse(Console.ReadLine()!);
+            _controller.EditProdutoController(id);
         }
         catch (FormatException ex)
         {

@@ -1,4 +1,5 @@
-﻿using Gerenciamento_De_Estoque.Models;
+﻿using Gerenciador_De_Estoque.Controllers;
+using Gerenciamento_De_Estoque.Models;
 using Gerenciamento_De_Estoque.Utils;
 
 namespace Gerenciamento_De_Estoque.Controllers;
@@ -39,7 +40,7 @@ class StockControlle
         Products.Add(produto);
 
         _fileManager.Salvamento(Products);
-        return "Tarefa adicionada!";
+        return "Produto adicionada!";
     }
 
     public List<ProductCategory> GetCategories()
@@ -50,5 +51,46 @@ class StockControlle
     public List<ProductModel> GetListaProdutos()
     {
         return Products;
+    }
+
+    public void EditProdutoController(int id)
+    {
+        int index = Products.FindIndex(p => p.Id == id);
+
+        if (index == -1)
+        {
+            Console.WriteLine("Produto digitado não foi entrado no banco de dados");
+            return;
+        }
+
+        ProductModel product = Products[index];
+
+        while (true){
+            Console.Clear();
+            Console.WriteLine("------------------------- Informção do produto ---------------------------");
+            Console.WriteLine($"Id: {product.Id}");
+            Console.WriteLine($"Nome: {product.Nome}");
+            Console.WriteLine($"Categoria: {product.Category.Nome}");
+            Console.WriteLine($"Quantidade: {product.Quantidade}");
+            Console.WriteLine($"Preço: {product.Preco}");
+
+            Console.WriteLine("\n Você deseja edita-lo ? ");
+            Console.WriteLine("1 - Sim");
+            Console.WriteLine("2 - Não");
+
+            switch (Console.ReadLine()!)
+            {
+                case "1":
+                    ProductModel productEdit = StockEditController.EditProduto(product, Categories);
+                    Products[index] = productEdit;
+                    _fileManager.Salvamento(Products);
+                    return;
+                case "2":
+                    return;
+                default:
+                    Console.WriteLine("Porfavor digite apenas 1 ou 2");
+                    break;
+            }
+        } 
     }
 }
