@@ -46,4 +46,9 @@ class StockControlle
     {
         return Categories;
     }
+
+    public List<ProductModel> GetListaProdutos()
+    {
+        return Products;
+    }
 }

@@ -1,4 +1,7 @@
-﻿using Gerenciamento_De_Estoque.Controllers;
+﻿using Gerenciador_De_Estoque.Controllers;
+using Gerenciador_De_Estoque.View;
+using Gerenciamento_De_Estoque.Controllers;
+using Gerenciamento_De_Estoque.Models;
 
 namespace Gerenciamento_De_Estoque.View;
 
@@ -29,6 +32,12 @@ class StockView
                     break;
                 case "2":
                     ListrarCategoria();
+                    break;
+                case "3":
+                    ConsultasProduto();
+                    break;
+                case "4":
+                    EditarProduto();
                     break;
                 case "7":
                     Console.WriteLine("Tchau");
@@ -77,5 +86,56 @@ class StockView
 
         Console.WriteLine("Pressione ENTER para continuar...");
         Console.ReadKey();
+    }
+
+    private void ConsultasProduto()
+    {
+        StockConsultaController _consultaController = new(_controller);
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("-------------------- Consultas -------------------");
+            Console.WriteLine("1 - Listar todos os produto");
+            Console.WriteLine("2 - Consulta produto por id");
+            Console.WriteLine("3 - Consulta produto pelo nome");
+            Console.WriteLine("4 - Voltar para o menu inicial");
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    _consultaController.ListaTodosProdutos();
+                    break;
+                case "2":
+                    _consultaController.ConsultaPorId();
+                    break;
+                case "3":
+                    _consultaController.ConsultaPorNome();
+                    break;
+                case "4":
+                    return;
+                default:
+                    Console.WriteLine("Opeção escolhida não existe");
+                    break;
+            }
+        }
+    }
+
+    private void EditarProduto()
+    {
+        Console.Clear();
+        Console.WriteLine("-------------------- Editar Produto -------------------");
+        Console.WriteLine("Digite o id do produto: ");
+        try
+        {
+            int id = int.Parse(Console.ReadLine()!);
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine("\nId digitado esta incorreto ");
+        }
+        finally
+        {
+            Console.WriteLine("\nPressione ENTER para continuar...");
+            Console.ReadKey();
+        }
     }
 }
