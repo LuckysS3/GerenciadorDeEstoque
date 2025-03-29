@@ -38,6 +38,12 @@ class StockView
                 case "4":
                     EditarProdutoMenu();
                     break;
+                case "5":
+                    RemoverProduto();
+                    break;
+                case "6":
+                    GerarRelatorio();
+                    break;
                 case "7":
                     Console.WriteLine("Tchau");
                     return;
@@ -130,12 +136,86 @@ class StockView
         }
         catch (FormatException ex)
         {
-            Console.WriteLine("\nId digitado esta incorreto ");
+            Console.WriteLine("\nDigite apenas numero");
+            Console.WriteLine("Deseja volta para o menu");
+            Console.WriteLine("1 - Sim");
+            Console.WriteLine("2 - Não");
+            while (true)
+            {
+                string escolha = Console.ReadLine()!;
+
+                if (escolha == "1")
+                {
+                    return;
+                }
+                else if (escolha == "2")
+                {
+                    EditarProdutoMenu();
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("Digite apenas 1 ou 2 ");
+                }
+            }
+
         }
         finally
         {
             Console.WriteLine("\nPressione ENTER para continuar...");
             Console.ReadKey();
         }
+    }
+
+    private void RemoverProduto()
+    {
+        Console.Clear();
+        Console.WriteLine("-------------------- Remover Produto -------------------");
+        Console.WriteLine("Digite o id do produto: ");
+        try
+        {
+            int id = int.Parse(Console.ReadLine()!);
+            _controller.RemoveProduto(id);
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine("\nDigite apenas numero");
+            Console.WriteLine("Deseja volta para o menu");
+            Console.WriteLine("1 - Sim");
+            Console.WriteLine("2 - Não");
+            while (true)
+            {
+                string escolha = Console.ReadLine()!;
+
+                if (escolha == "1")
+                {
+                    return;
+                }
+                else if (escolha == "2")
+                {
+                    RemoverProduto();
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("Digite apenas 1 ou 2 ");
+                }
+            }
+        }
+        finally
+        {
+            Console.WriteLine("\nPressione ENTER para continuar...");
+            Console.ReadKey();
+        }
+    }
+
+    private void GerarRelatorio()
+    {
+        Console.Clear();
+        Console.WriteLine("-------------------- Gerar Relatórios -------------------");
+        _controller.GerarDocumento();
+        Console.WriteLine("Relatório gerado com susseso");
+        Console.WriteLine("\nPressione ENTER para continuar...");
+        Console.ReadKey();
     }
 }

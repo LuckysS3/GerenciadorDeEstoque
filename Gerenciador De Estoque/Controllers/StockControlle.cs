@@ -1,6 +1,8 @@
 ﻿using Gerenciador_De_Estoque.Controllers;
+using Gerenciador_De_Estoque.Utils;
 using Gerenciamento_De_Estoque.Models;
 using Gerenciamento_De_Estoque.Utils;
+using System.Data;
 
 namespace Gerenciamento_De_Estoque.Controllers;
 
@@ -74,7 +76,7 @@ class StockControlle
             Console.WriteLine($"Quantidade: {product.Quantidade}");
             Console.WriteLine($"Preço: {product.Preco}");
 
-            Console.WriteLine("\n Você deseja edita-lo ? ");
+            Console.WriteLine("\nVocê deseja edita-lo ? ");
             Console.WriteLine("1 - Sim");
             Console.WriteLine("2 - Não");
 
@@ -92,5 +94,37 @@ class StockControlle
                     break;
             }
         } 
+    }
+
+    public void RemoveProduto(int id)
+    {
+        var product = Products.FirstOrDefault(p => p.Id == id);
+
+        if (product == null)
+        {
+            Console.WriteLine("Produto não foi encontrado no banco de dados");
+            return;
+        }
+
+        Products.Remove(product);
+        _fileManager.Salvamento(Products);
+        Console.WriteLine("Produto removido com susseso!");
+    }
+
+    public void GerarDocumento()
+    {
+        string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        string subfolderPath = Path.Combine(documentosPath, "Relatorios");
+
+        if (!Directory.Exists(subfolderPath))
+        {
+            Directory.CreateDirectory(subfolderPath);
+        }
+        string dataAtual = DateTime.Now.ToString("dd-MM-yyyy");
+        string pdfFilePath = Path.Combine(subfolderPath, $"RelatorioDeEstoque {dataAtual}.pdf");
+
+        GeradorDePdf geradorDePdf = new GeradorDePdf(pdfFilePath);
+
+        geradorDePdf.GenerateStockReport(Products);
     }
 }

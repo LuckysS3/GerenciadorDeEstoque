@@ -32,6 +32,9 @@ class StockEditController
                 case "3":
                     EditProdutoQuantidade();
                     return Product;
+                case "4":
+                    EditProdutoPreco();
+                    return Product;
                 default:
                     Console.WriteLine("Opeção escolhida não existe");
                     break;
@@ -115,6 +118,44 @@ class StockEditController
                 else if (escolha == "2")
                 {
                     EditProdutoQuantidade();
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("Digite apenas 1 ou 2 ");
+                }
+            }
+        }
+    }
+    private static void EditProdutoPreco()
+    {
+        Console.WriteLine("\n\n----------------------------------------------------");
+        Console.WriteLine("Digite o preço: ");
+
+        try
+        {
+            int preco = int.Parse(Console.ReadLine()!);
+
+            Product.Preco = preco;
+            Console.WriteLine("Produto editado com susseso");
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine("\nDigite apenas numero");
+            Console.WriteLine("Deseja volta para o menu");
+            Console.WriteLine("1 - Sim");
+            Console.WriteLine("2 - Não");
+            while (true)
+            {
+                string escolha = Console.ReadLine()!;
+
+                if (escolha == "1")
+                {
+                    return;
+                }
+                else if (escolha == "2")
+                {
+                    EditProdutoPreco();
                     return;
                 }
                 else
