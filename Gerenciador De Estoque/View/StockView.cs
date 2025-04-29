@@ -1,6 +1,5 @@
 ﻿using Gerenciador_De_Estoque.Controllers;
 using Gerenciamento_De_Estoque.Controllers;
-using Gerenciamento_De_Estoque.Models;
 
 namespace Gerenciamento_De_Estoque.View;
 

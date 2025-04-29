@@ -4,7 +4,6 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
-using System.Collections.Generic;
 
 namespace Gerenciador_De_Estoque.Utils;
 
