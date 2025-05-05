@@ -30,7 +30,7 @@ class StockConsultaController
         {
             Console.WriteLine($"Id: {pro.Id}");
             Console.WriteLine($"Nome: {pro.Nome}");
-            Console.WriteLine($"Categoria: {pro.Category.Nome}");
+            Console.WriteLine($"Categoria: {pro.Category}");
             Console.WriteLine($"Quantidade: {pro.Quantidade}");
             Console.WriteLine($"Preço: {pro.Preco}");
             Console.WriteLine("-----------------------------------------------");
@@ -68,7 +68,7 @@ class StockConsultaController
             Console.WriteLine("-----------------------------------------------");
             Console.WriteLine($"Id: {product.Id}");
             Console.WriteLine($"Nome: {product.Nome}");
-            Console.WriteLine($"Categoria: {product.Category.Nome}");
+            Console.WriteLine($"Categoria: {product.Category}");
             Console.WriteLine($"Quantidade: {product.Quantidade}");
             Console.WriteLine($"Preço: {product.Preco}");
 
@@ -117,7 +117,7 @@ class StockConsultaController
             Console.WriteLine("-----------------------------------------------");
             Console.WriteLine($"Id: {product.Id}");
             Console.WriteLine($"Nome: {product.Nome}");
-            Console.WriteLine($"Categoria: {product.Category.Nome}");
+            Console.WriteLine($"Categoria: {product.Category}");
             Console.WriteLine($"Quantidade: {product.Quantidade}");
             Console.WriteLine($"Preço: {product.Preco}");
 

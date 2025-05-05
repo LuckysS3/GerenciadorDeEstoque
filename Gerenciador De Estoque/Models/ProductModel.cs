@@ -4,7 +4,7 @@ public class ProductModel
 {
     public int Id { get; set; }
     public string? Nome { get; set; }
-    public ProductCategory? Category { get; set; }
+    public string? Category { get; set; }
     public int Quantidade { get; set; }
     public double Preco { get; set; }
 }

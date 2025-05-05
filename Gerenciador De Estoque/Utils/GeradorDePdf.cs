@@ -64,7 +64,7 @@ class GeradorDePdf
         {
             table.AddCell(product.Id.ToString());
             table.AddCell(product.Nome);
-            table.AddCell(product.Category.Nome);
+            table.AddCell(product.Category);
             table.AddCell(product.Quantidade.ToString());
             table.AddCell($"R$ {product.Preco:F2}");
         }

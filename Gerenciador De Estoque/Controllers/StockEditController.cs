@@ -86,7 +86,7 @@ class StockEditController
             }
         }
         Console.WriteLine("Produto editado com susseso");
-        Product.Category = categoriaVerificada;
+        Product.Category = categoria;
     }
 
     private static void EditProdutoQuantidade()

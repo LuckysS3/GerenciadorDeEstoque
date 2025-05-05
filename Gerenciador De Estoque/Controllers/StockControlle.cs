@@ -38,7 +38,7 @@ class StockControlle
         if (quantidade < 0 || preco <= 0) return "Erro: A quantidade e preço não pode ser nergativo";
 
 
-        ProductModel produto = new ProductModel { Id = id, Nome = nome, Category = categoriaEscolhida, Preco = preco };
+        ProductModel produto = new ProductModel { Id = id, Nome = nome, Category = categoria, Preco = preco };
         Products.Add(produto);
 
         _fileManager.Salvamento(Products);
@@ -72,7 +72,7 @@ class StockControlle
             Console.WriteLine("------------------------- Informção do produto ---------------------------");
             Console.WriteLine($"Id: {product.Id}");
             Console.WriteLine($"Nome: {product.Nome}");
-            Console.WriteLine($"Categoria: {product.Category.Nome}");
+            Console.WriteLine($"Categoria: {product.Category}");
             Console.WriteLine($"Quantidade: {product.Quantidade}");
             Console.WriteLine($"Preço: {product.Preco}");
 
